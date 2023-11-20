@@ -55,6 +55,7 @@ class DatabaseHelper {
         FOREIGN KEY(student_id) REFERENCES Student(student_id)
       )
     ''');
+    await db.insert('User', {'username': 'admin', 'password': '123', 'email': 'admin', 'role': 'A'});
   }
 
   Future<bool> login(String email, String password) async {

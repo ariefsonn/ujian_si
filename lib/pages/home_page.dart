@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String selectedStudent = 'Victor';
+  String selectedStudent = '';
   int selectedId = 0;
   List<String> students = [];
   List<int> studentIds = [];
@@ -44,6 +44,8 @@ class _HomePageState extends State<HomePage> {
     List<Map<String, dynamic>> fetchedStudents = await DatabaseHelper.instance.getAllStudents();
     students = fetchedStudents.map((student) => student['nama_student'] as String).toList();
     studentIds = fetchedStudents.map((student) => student['student_id'] as int).toList();
+
+    selectedStudent = students[0];
 
     setState(() {
       int selectedIndex = students.indexOf(selectedStudent);
